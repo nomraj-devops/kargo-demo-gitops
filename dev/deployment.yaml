@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kargo-demo-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kargo-demo-dev
+  template:
+    metadata:
+      labels:
+        app: kargo-demo-dev
+    spec:
+      containers:
+      - name: app
+        image: nomrajdevops/kargo-demo:v1
+        ports:
+        - containerPort: 3000

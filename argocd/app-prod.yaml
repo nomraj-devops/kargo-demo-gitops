@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kargo-demo-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/nomraj-devops/kargo-demo-gitops.git
+    targetRevision: main
+    path: prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod
+  syncPolicy:
+    automated: {}
